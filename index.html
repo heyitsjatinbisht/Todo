@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body data-theme="light" class="h-screen">
+    <div class="flex justify-center pt-10">
+      <h1 class="text-center text-4xl font-bold mx-10">TODO APP</h1>
+      <label class="input input-bordered flex items-center gap-2 rounded-full">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 16"
+          fill="#FF6500"
+          class="h-7 w-7"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <input
+          type="text"
+          class="grow pl-5 text-xl"
+          id="search-input"
+          placeholder="Search"
+          oninput="searchTodos()"
+        />
+      </label>
+    </div>
+
+    <div class="my-10">
+      <form
+        onsubmit="addTodo(event)"
+        class="flex justify-between rounded-full w-[570px] bg-gray-200 mx-auto"
+      >
+        <input
+          id="todo-input"
+          type="text"
+          placeholder="Add Your Task"
+          class="input w-full border-none bg-gray-200 rounded-l-full focus:outline-none focus:ring-0"
+        />
+        <button
+          type="submit"
+          class="w-[150px] bg-[#FF6500] text-white text-xl font-semibold rounded-full"
+        >
+          Add
+        </button>
+      </form>
+    </div>
+
+    <div id="todo-item" class="space-y-4 mt-6">
+      <!-- Todo Item -->
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
