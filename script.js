@@ -42,7 +42,7 @@ function displayTodos(filterTodos = todos) {
     const todoItem = document.createElement("div");
 
     todoItem.className =
-      "flex justify-between items-center p-4 rounded-lg shadow-lg mb-2 mx-auto max-w-xl";
+      "flex justify-between items-center p-4 rounded-lg shadow-lg mb-2 mx-auto h-[60px] max-w-xl";
 
     const div1 = document.createElement("div");
     div1.className = "flex gap-5";
@@ -95,17 +95,55 @@ function displayTodos(filterTodos = todos) {
       "btn btn-sm btn-outline btn-error hover:bg-error-focus";
     deleteButton.onclick = () => deleteTodo(todo.id);
 
+    const menuBarBox = document.createElement("div");
+    menuBarBox.className = "flex gap-1";
+
+    const menuBar = document.createElement("div");
+
+    menuBar.className =
+      "flex flex-col gap-1 item-center justify-center cursor-pointer";
+
+    const dot = document.createElement("p");
+    dot.className = "bg-black w-1 h-1 rounded-full";
+
+    const dot2 = document.createElement("p");
+    dot2.className = "bg-black w-1 h-1 rounded-full";
+
+    const dot3 = document.createElement("p");
+    dot3.className = "bg-black w-1 h-1 rounded-full";
+
+    menuBarBox.appendChild(div2);
+    menuBar.appendChild(dot);
+    menuBar.appendChild(dot2);
+    menuBar.appendChild(dot3);
+    menuBarBox.appendChild(menuBar);
+
+    let dotToggle = true;
+
+    menuBar.onclick = () => {
+      if (dotToggle) {
+        div2.appendChild(editButton);
+        div2.appendChild(saveButton);
+        div2.appendChild(deleteButton);
+        dotToggle = !dotToggle;
+      } else {
+        div2.removeChild(editButton);
+        div2.removeChild(saveButton);
+        div2.removeChild(deleteButton);
+        dotToggle = !dotToggle;
+      }
+    };
+
     todoTextContainer.appendChild(todoText);
     todoTextContainer.appendChild(todoInput);
     div1.appendChild(checkbox);
     div1.appendChild(todoTextContainer);
-    div2.appendChild(editButton);
-    div2.appendChild(saveButton);
-    div2.appendChild(deleteButton);
 
     todoItem.appendChild(div1);
 
-    todoItem.appendChild(div2);
+    // todoItem.appendChild(div2);
+
+    todoItem.appendChild(menuBarBox);
 
     todoList.appendChild(todoItem);
   });
